@@ -14,12 +14,14 @@ import javafx.scene.layout.*;
 public class Game extends Pane {
     private Snake snake = null;
     private GameTimer gameTimer = new GameTimer();
+    public int score;
 
 
     public Game() {
         Globals.getInstance().game = this;
         Globals.getInstance().display = new Display(this);
         Globals.getInstance().setupResources();
+        this.score = 0;
 
         init();
     }

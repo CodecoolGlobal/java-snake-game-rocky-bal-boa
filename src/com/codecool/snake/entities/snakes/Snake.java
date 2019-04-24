@@ -9,6 +9,7 @@ import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.text.Text;
 
 
 public class Snake implements Animatable {
@@ -61,8 +62,10 @@ public class Snake implements Animatable {
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
-            Globals.getInstance().game.setTableBackground(new Image("powerup_berry.png")); //TODO change the background to gameover!
             Globals.getInstance().stopGame();
+            Globals.getInstance().display.clear();
+            Globals.getInstance().game.setTableBackground(new Image("gameover.png"));
+            System.out.println(Globals.getInstance().game.score);
         }
     }
 
