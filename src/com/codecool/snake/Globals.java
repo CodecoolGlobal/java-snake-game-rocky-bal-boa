@@ -8,8 +8,8 @@ import javafx.scene.layout.Pane;
 public class Globals {
     private static Globals instance = null;
 
-    public static final double WINDOW_WIDTH = 1000;
-    public static final double WINDOW_HEIGHT = 700;
+    public static final double WINDOW_WIDTH = 1920;
+    public static final double WINDOW_HEIGHT = 1080;
 
     public Display display;
     public Game game;

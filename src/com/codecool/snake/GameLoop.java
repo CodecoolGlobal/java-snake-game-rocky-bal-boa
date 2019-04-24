@@ -4,6 +4,8 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.Snake;
+import com.codecool.snake.eventhandler.InputHandler;
+import javafx.scene.input.KeyCode;
 
 import java.util.List;
 
@@ -21,6 +23,13 @@ public class GameLoop {
         running = false;
     }
 
+    public void restart() {
+        if(InputHandler.getInstance().isKeyPressed(KeyCode.SPACE)) {
+            stop();
+            start();
+        }
+    }
+    
     public void step() {
         if(running) {
             snake.step();
