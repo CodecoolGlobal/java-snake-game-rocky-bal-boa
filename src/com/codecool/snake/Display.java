@@ -4,6 +4,7 @@ import com.codecool.snake.entities.GameEntity;
 import java.util.List;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 
 public class Display {
@@ -40,5 +41,13 @@ public class Display {
     public void clear() {
         displayPane.getChildren().clear();
         gameObjects.clear();
+    }
+
+    public void showString(String string, int x, int y) {
+        Text text = new Text();
+        text.setText("Current health:" + string);
+        text.setX(x);
+        text.setY(y);
+        displayPane.getChildren().add(text);
     }
 }
