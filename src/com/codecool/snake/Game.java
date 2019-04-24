@@ -7,6 +7,9 @@ import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
+
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
@@ -35,6 +38,7 @@ public class Game extends Pane {
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
+
     }
 
     public void start() {
