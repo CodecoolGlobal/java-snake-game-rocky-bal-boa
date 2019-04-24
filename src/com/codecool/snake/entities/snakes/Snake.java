@@ -24,7 +24,7 @@ public class Snake implements Animatable {
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
-        Globals.getInstance().display.showString(Integer.toString(health), 100, 100, "Current Health", "Verdana", 50);
+        Globals.getInstance().display.showString( "Current Health", Integer.toString(health), 100, 100,"Verdana", 50);
         addPart(4);
     }
 
@@ -66,7 +66,7 @@ public class Snake implements Animatable {
             Globals.getInstance().stopGame();
             Globals.getInstance().display.clear();
             Globals.getInstance().game.setTableBackground(new Image("gameover.png"));
-            System.out.println(Globals.getInstance().game.score);
+            Globals.getInstance().display.showString("Your Score:  ", Integer.toString(Globals.getInstance().game.score),600, 980, "Verdana", 100);
         }
     }
 

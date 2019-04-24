@@ -45,7 +45,7 @@ public class Display {
         gameObjects.clear();
     }
 
-    public void showString(String value, int xCoordinate, int yCoordinate, String textOfValue, String fontType, int fontSize) {
+    public void showString( String textOfValue, String value, int xCoordinate, int yCoordinate, String fontType, int fontSize) {
         Text text = new Text();
         text.setText(textOfValue + value);
         text.setFont(Font.font(fontType, fontSize));
