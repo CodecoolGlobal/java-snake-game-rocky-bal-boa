@@ -19,11 +19,18 @@ public class Snake implements Animatable {
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
 
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
 
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
-        Globals.getInstance().display.showString(Integer.toString(health), 100, 100);
+        // Globals.getInstance().display.showString(Integer.toString(health), 100, 100);
         addPart(4);
     }
 
@@ -56,7 +63,8 @@ public class Snake implements Animatable {
     }
 
     public void changeHealth(int diff) {
-        health += diff;
+        health -= diff;
+        Globals.getInstance().display.showString(Integer.toString(health), 100, 100);
     }
 
     private void checkForGameOverConditions() {
