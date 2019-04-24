@@ -2,6 +2,7 @@ package com.codecool.snake;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -13,6 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         Game game = new Game();
+        game.setTableBackground(new Image("background.jpg"));
         Scene mainScene = new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
 
         primaryStage.setTitle("Snake Game");
