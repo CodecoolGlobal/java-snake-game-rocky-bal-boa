@@ -4,6 +4,8 @@ import com.codecool.snake.entities.GameEntity;
 import java.util.List;
 
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 
@@ -43,11 +45,13 @@ public class Display {
         gameObjects.clear();
     }
 
-    public void showString(String string, int x, int y) {
+    public void showString(String value, int xCoordinate, int yCoordinate, String textOfValue, String fontType, int fontSize) {
         Text text = new Text();
-        text.setText("Current health:" + string);
-        text.setX(x);
-        text.setY(y);
+        text.setText(textOfValue + value);
+        text.setFont(Font.font(fontType, fontSize));
+        text.setFill(Color.WHITE);
+        text.setX(xCoordinate);
+        text.setY(yCoordinate);
         displayPane.getChildren().add(text);
     }
 }
