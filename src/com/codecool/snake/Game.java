@@ -7,8 +7,11 @@ import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
+
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 
 
 public class Game extends Pane {
@@ -26,8 +29,8 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(4);
-        spawnPowerUps(4);
+        spawnEnemies(10);
+        spawnPowerUps(10);
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -57,5 +60,11 @@ public class Game extends Pane {
         Scene scene = getScene();
         scene.setOnKeyPressed(event -> InputHandler.getInstance().setKeyPressed(event.getCode()));
         scene.setOnKeyReleased(event -> InputHandler.getInstance().setKeyReleased(event.getCode()));
+    }
+
+    public void setTableBackground(Image tableBackground) {
+        setBackground(new Background(new BackgroundImage(tableBackground,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT,
+                BackgroundPosition.CENTER, BackgroundSize.DEFAULT)));
     }
 }
