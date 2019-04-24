@@ -10,6 +10,7 @@ import com.codecool.snake.eventhandler.InputHandler;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
+import javafx.scene.text.Text;
 
 
 public class Snake implements Animatable {
@@ -30,7 +31,7 @@ public class Snake implements Animatable {
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
-        // Globals.getInstance().display.showString(Integer.toString(health), 100, 100);
+        Globals.getInstance().display.showString( "Current Health", Integer.toString(health), 100, 100,"Verdana", 50);
         addPart(4);
     }
 
@@ -63,15 +64,16 @@ public class Snake implements Animatable {
     }
 
     public void changeHealth(int diff) {
-        health -= diff;
-        Globals.getInstance().display.showString(Integer.toString(health), 100, 100);
+        health += diff;
     }
 
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
-            Globals.getInstance().game.setTableBackground(new Image("powerup_berry.png")); //TODO change the background to gameover!
             Globals.getInstance().stopGame();
+            Globals.getInstance().display.clear();
+            Globals.getInstance().game.setTableBackground(new Image("gameover.png"));
+            Globals.getInstance().display.showString("Your Score:  ", Integer.toString(Globals.getInstance().game.score),600, 980, "Verdana", 100);
         }
     }
 
