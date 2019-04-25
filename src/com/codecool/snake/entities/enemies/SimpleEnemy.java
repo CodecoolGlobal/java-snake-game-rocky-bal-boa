@@ -7,6 +7,8 @@ import com.codecool.snake.Utils;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeHead;
+
+import java.util.List;
 import java.util.Random;
 
 import javafx.geometry.Point2D;
@@ -22,8 +24,21 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
         super(-10);
 
         setImage(Globals.getInstance().getImage("SimpleEnemy"));
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        boolean isColliding;
+
+        do {
+            isColliding = false;
+            setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
+            setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+            List<GameEntity> gameObjs = Globals.getInstance().display.getObjectList();
+            for (int idxToCheck = 0; idxToCheck < gameObjs.size(); ++idxToCheck) {
+                GameEntity objToCheck = gameObjs.get(idxToCheck);
+                if (objToCheck.getBoundsInParent().intersects(this.getBoundsInParent())) {
+                    isColliding = true;
+                    break;
+                }
+            }
+        } while (isColliding);
 
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
