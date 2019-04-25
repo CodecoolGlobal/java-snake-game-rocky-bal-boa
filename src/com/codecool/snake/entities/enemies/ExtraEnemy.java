@@ -9,6 +9,7 @@ import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.geometry.Point2D;
 
+import java.util.List;
 import java.util.Random;
 
 public class ExtraEnemy extends Enemy implements Animatable, Interactable {
@@ -19,8 +20,23 @@ public class ExtraEnemy extends Enemy implements Animatable, Interactable {
         super(-20);
 
         setImage(Globals.getInstance().getImage("ExtraEnemy"));
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+
+        boolean isColliding;
+
+        do {
+            isColliding = false;
+            setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
+            setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+            List<GameEntity> gameObjs = Globals.getInstance().display.getObjectList();
+            for (int idxToCheck = 0; idxToCheck < gameObjs.size(); ++idxToCheck) {
+                GameEntity objToCheck = gameObjs.get(idxToCheck);
+                if (objToCheck.getBoundsInParent().intersects(this.getBoundsInParent())) {
+                    isColliding = true;
+                    break;
+                }
+            }
+        } while (isColliding);
+
 
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
