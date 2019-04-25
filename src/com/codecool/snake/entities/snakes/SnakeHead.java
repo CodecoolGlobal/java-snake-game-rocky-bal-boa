@@ -45,12 +45,11 @@ public class SnakeHead extends GameEntity implements Interactable {
             snake.changeHealth(((Enemy) entity).getDamage());
             Globals.getInstance().display.updateString( "Current health: ", Integer.toString(snake.getHealth()));
         }
-        if(entity instanceof SimplePowerUp){
+        if(entity instanceof SimplePowerUp) {
             System.out.println(getMessage());
             snake.addPart(4);
-            int healt = snake.getHealth();
-            snake.setHealth(healt+10);
-            Globals.getInstance().display.updateString("Current health: ", Integer.toString(healt));
+            snake.changeHealth(10);
+            Globals.getInstance().display.updateString("Current health: ", Integer.toString(snake.getHealth()));
         }
     }
 
