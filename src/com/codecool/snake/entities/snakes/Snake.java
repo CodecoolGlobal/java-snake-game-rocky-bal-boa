@@ -6,11 +6,11 @@ import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.eventhandler.InputHandler;
-
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.text.Text;
+import java.util.Random;
 
 
 public class Snake implements Animatable {
@@ -51,6 +51,13 @@ public class Snake implements Animatable {
         checkForGameOverConditions();
 
         body.doPendingModifications();
+        Random rand = new Random();
+        int randomNum = rand.nextInt(200);
+        if (randomNum == 0) {
+            Globals.getInstance().game.spawnEnemies(1);
+        } else if (randomNum == 4) {
+            Globals.getInstance().game.spawnPowerUps(1);
+        }
     }
 
     private SnakeControl getUserInput() {
