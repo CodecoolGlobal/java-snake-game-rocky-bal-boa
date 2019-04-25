@@ -8,6 +8,9 @@ import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.codecool.snake.entities.snakes.Snake;
+
+import java.util.List;
+import java.util.Random;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 
@@ -34,8 +37,8 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(10);
-        spawnPowerUps(10);
+        //spawnEnemies(10);
+        //spawnPowerUps(10);
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().display.showString( "Current health: ", Integer.toString(snake.getHealth()), 100, 100,"Verdana", 50);
@@ -63,14 +66,14 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnEnemies(int numberOfEnemies) {
+    public void spawnEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) {
             new SimpleEnemy();
             new ExtraEnemy();
         }
     }
 
-    private void spawnPowerUps(int numberOfPowerUps) {
+    public void spawnPowerUps(int numberOfPowerUps) {
         for(int i = 0; i < numberOfPowerUps; ++i) {
             new SimplePowerUp();
             new EggPowerUp();
