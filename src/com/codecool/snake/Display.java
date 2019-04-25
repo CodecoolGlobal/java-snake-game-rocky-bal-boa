@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 public class Display {
     private Pane displayPane;
     private DelayedModificationList<GameEntity> gameObjects = new DelayedModificationList<>();
+    private Text text;
 
     public Display(Pane pane) {
         displayPane = pane;
@@ -46,12 +47,16 @@ public class Display {
     }
 
     public void showString( String textOfValue, String value, int xCoordinate, int yCoordinate, String fontType, int fontSize) {
-        Text text = new Text();
+        this.text = new Text();
         text.setText(textOfValue + value);
         text.setFont(Font.font(fontType, fontSize));
         text.setFill(Color.WHITE);
         text.setX(xCoordinate);
         text.setY(yCoordinate);
         displayPane.getChildren().add(text);
+    }
+
+    public void updateString( String textOfValue, String value) {
+        text.setText(textOfValue + value);
     }
 }

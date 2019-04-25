@@ -20,22 +20,26 @@ public class Snake implements Animatable {
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
 
-    public static void setSpeed(float speed) {
+
+
+      public static void setSpeed(float speed) {
         Snake.speed = speed;
+
     }
 
     public void setHealth(int health) {
         this.health = health;
     }
 
+  
     public int getHealth() {
         return health;
     }
 
+  
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
-        Globals.getInstance().display.showString( "Current Health", Integer.toString(health), 100, 100,"Verdana", 50);
         addPart(4);
     }
 
