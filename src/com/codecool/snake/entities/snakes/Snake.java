@@ -31,7 +31,6 @@ public class Snake implements Animatable {
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
         body = new DelayedModificationList<>();
-        Globals.getInstance().display.showString( "Current Health", Integer.toString(health), 100, 100,"Verdana", 50);
         addPart(4);
     }
 

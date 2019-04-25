@@ -5,6 +5,7 @@ import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
+import com.codecool.snake.entities.snakes.Snake;
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
 
@@ -35,6 +36,7 @@ public class Game extends Pane {
         spawnPowerUps(10);
 
         GameLoop gameLoop = new GameLoop(snake);
+        Globals.getInstance().display.showString( "Current Health", Integer.toString(snake.getHealth()), 100, 100,"Verdana", 50);
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
