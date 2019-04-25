@@ -8,13 +8,11 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import java.util.Random;
 
 
-public class SimplePowerUp extends GameEntity implements Interactable {
-    private Snake snake;
-
+public class EggPowerUp extends GameEntity implements Interactable {
     private static Random rnd = new Random();
 
-    public SimplePowerUp() {
-        setImage(Globals.getInstance().getImage("powerup"));
+    public EggPowerUp() {
+        setImage(Globals.getInstance().getImage("egg"));
 
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
@@ -26,6 +24,7 @@ public class SimplePowerUp extends GameEntity implements Interactable {
             System.out.println(getMessage());
             destroy();
             Globals.getInstance().game.score++;
+            Snake.setSpeed(4);
         }
     }
 

@@ -14,12 +14,23 @@ import javafx.scene.text.Text;
 
 
 public class Snake implements Animatable {
-    private static final float speed = 2;
+    private static float speed = 2;
     private int health = 100;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
 
+    public static void setSpeed(float speed) {
+        Snake.speed = speed;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getHealth() {
+        return health;
+    }
 
     public Snake(Vec2d position) {
         head = new SnakeHead(this, position);
