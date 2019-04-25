@@ -23,12 +23,6 @@ public class GameLoop {
         running = false;
     }
 
-    public void restart() {
-        if(InputHandler.getInstance().isKeyPressed(KeyCode.SPACE)) {
-            stop();
-            start();
-        }
-    }
     
     public void step() {
         if(running) {

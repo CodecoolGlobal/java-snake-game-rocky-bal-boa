@@ -16,7 +16,7 @@ public class ExtraEnemy extends Enemy implements Animatable, Interactable {
     private static Random rnd = new Random();
 
     public ExtraEnemy() {
-        super(20);
+        super(-20);
 
         setImage(Globals.getInstance().getImage("ExtraEnemy"));
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);

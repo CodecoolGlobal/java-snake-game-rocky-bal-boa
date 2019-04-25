@@ -1,8 +1,13 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
+
+import java.awt.event.ActionListener;
 import java.util.List;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -58,5 +63,20 @@ public class Display {
 
     public void updateString( String textOfValue, String value) {
         text.setText(textOfValue + value);
+    }
+
+    public void addRestartButton() {
+        Button button = new Button("Restart");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Globals.getInstance().game.reStartGame();
+            }
+        });
+
+
+        button.setLayoutX(1700);
+        button.setLayoutY(980);
+        displayPane.getChildren().add(button);
     }
 }

@@ -9,7 +9,6 @@ import java.util.Random;
 
 
 public class SimplePowerUp extends GameEntity implements Interactable {
-    private Snake snake;
 
     private static Random rnd = new Random();
 
