@@ -30,10 +30,4 @@ public class Main extends Application {
         System.out.println("Exiting..");
     }
 
-    private void addRestartButton() {
-        //Globals.getInstance().display.add();
-        //button.setLayoutX(1300);
-        //button.setLayoutY(850);
-    }
-
 }

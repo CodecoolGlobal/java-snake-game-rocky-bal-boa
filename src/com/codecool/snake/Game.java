@@ -38,16 +38,25 @@ public class Game extends Pane {
         spawnPowerUps(10);
 
         GameLoop gameLoop = new GameLoop(snake);
-        Globals.getInstance().display.showString( "Current Health", Integer.toString(snake.getHealth()), 100, 100,"Verdana", 50);
+        Globals.getInstance().display.showString( "Current health: ", Integer.toString(snake.getHealth()), 100, 100,"Verdana", 50);
         Globals.getInstance().setGameLoop(gameLoop);
         gameTimer.setup(gameLoop::step);
         gameTimer.play();
+        Globals.getInstance().display.addRestartButton();
 
     }
 
     public void start() {
         setupInputHandling();
         Globals.getInstance().startGame();
+    }
+
+    public void reStartGame() {
+        Globals.getInstance().stopGame();
+        Globals.getInstance().display.clear();
+        Globals.getInstance().display.addRestartButton();
+        init();
+        start();
     }
 
     private void spawnSnake() {
