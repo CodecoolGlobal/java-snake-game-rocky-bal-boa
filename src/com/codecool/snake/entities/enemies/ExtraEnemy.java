@@ -1,34 +1,31 @@
 package com.codecool.snake.entities.enemies;
 
-import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
-import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.Utils;
+import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.entities.snakes.SnakeHead;
-import java.util.Random;
-
 import javafx.geometry.Point2D;
 
+import java.util.Random;
 
-
-public class SimpleEnemy extends Enemy implements Animatable, Interactable {
-
+public class ExtraEnemy extends Enemy implements Animatable, Interactable {
     private Point2D heading;
     private static Random rnd = new Random();
 
-    public SimpleEnemy() {
-        super(-10);
+    public ExtraEnemy() {
+        super(20);
 
-        setImage(Globals.getInstance().getImage("SimpleEnemy"));
+        setImage(Globals.getInstance().getImage("ExtraEnemy"));
         setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
         setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
 
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
 
-        int speed = 1;
+        int speed = 2;
         heading = Utils.directionToVector(direction, speed);
     }
 
@@ -47,7 +44,7 @@ public class SimpleEnemy extends Enemy implements Animatable, Interactable {
             System.out.println(getMessage());
             destroy();
             Snake.setSpeed(2);
-            }
+        }
     }
 
     @Override
